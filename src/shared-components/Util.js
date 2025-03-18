@@ -4,12 +4,21 @@ export const RESUMEFIELDS = [
         canAdd: false,
         fields: [
             { label: "name", type: "text" },
+            { label: "role", type: "text"},
             { label: "email", type: "email" },
-            { label: "phone", type: "phone" }
+            { label: "phone", type: "phone" },
+            { label: "location", type: "text"},
         ]
     },
     {
-        title: "work history",
+        title: "summary",
+        canAdd: false,
+        fields: [
+            { label: "summary", type: "textarea"},
+        ]
+    },
+    {
+        title: "work experience",
         canAdd: true,
         fields: [
             { label: "company", type: "text" },
@@ -17,13 +26,6 @@ export const RESUMEFIELDS = [
             { label: "from", type: "date" },
             { label: "to", type: "date" },
             { label: "details", type: "textarea"},
-        ]
-    },
-    {
-        title: "skills",
-        canAdd: true,
-        fields: [
-            { label: "skills", type: "text"}
         ]
     },
     {
@@ -36,5 +38,12 @@ export const RESUMEFIELDS = [
             { label: "from", type: "date" },
             { label: "to", type: "date"}
         ]
-    }
+    },
+    {
+        title: "skills",
+        canAdd: true,
+        fields: [
+            { label: "skills", type: "text"}
+        ]
+    },
 ]

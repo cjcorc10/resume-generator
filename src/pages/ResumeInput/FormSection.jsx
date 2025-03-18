@@ -25,13 +25,15 @@ const FormSection = ({ section, state, setState }) => {
             { seeForm && section.canAdd && 
                 <button 
                     onClick={(e) => {
-                        // Showing at next render instead of onclick
                         e.preventDefault();
 
                         const newObj = {};
                         for(let field in state[section.title][0])
                             newObj[field] = "";
-                        state[section.title].push(newObj);
+                        setState(prev => ({
+                            ...prev,
+                            [section.title]: [...prev[section.title], newObj]
+                        }))
                     }}
                     className="bg-violet-500 hover:bg-violet-600 p-2 overflow-clip rounded-md text-violet-100"
                     >add more</button>
