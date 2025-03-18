@@ -25,7 +25,7 @@ export const RESUMEFIELDS = [
             { label: "role", type: "text" },
             { label: "from", type: "date" },
             { label: "to", type: "date" },
-            { label: "details", type: "textarea"},
+            { label: "responsibilities", type: "textarea"},
         ]
     },
     {

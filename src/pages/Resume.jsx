@@ -92,10 +92,10 @@ const Resume = ({state}) => {
                 <Text style={styles.sectionTitle}>WORK EXPERIENCE</Text>
                 <Text style={styles.sectionLine}></Text>
                 {state["work experience"].map((entry, idx) => (
-                    <View key={idx}>
+                    <View style={tw("flex flex-col gap-2 my-2")} key={idx}>
                         <Text style={tw("font-bold")}>{entry.role && entry.role + '\u007c' + entry.company}</Text>
                         <Text style={tw("italic text-md")}>{entry.from && entry.from + '\u2013' + entry.to}</Text>
-                        { entry.details && entry.details.split('\n').map((line, idx) => (
+                        { entry.responsibilities && entry.responsibilities.split('\n').map((line, idx) => (
                             <Text key={idx}>{'\u2022' + line}</Text>
                         ))                        
                         }
