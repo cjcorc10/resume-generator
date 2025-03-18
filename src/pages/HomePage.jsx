@@ -1,7 +1,7 @@
 import ResumeInput from "./ResumeInput";
 import Resume from "./Resume";
 import { RESUMEFIELDS } from "../shared-components/Util";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PDFViewer} from '@react-pdf/renderer';
 
 const initializeFields = (fields) => {
@@ -12,7 +12,12 @@ const initializeFields = (fields) => {
 
 const HomePage = () => {
 
+    // fetch data from localstorage or initialize
     const [resumeData, setResumeData] = useState(() => {
+        const storedData = localStorage.getItem('ResumeDataKey');
+        if(storedData) 
+            return JSON.parse(storedData);
+        
         const initialData = {};
         RESUMEFIELDS.forEach(section => {
             initialData[section.title] = initializeFields(section.fields);
@@ -20,7 +25,10 @@ const HomePage = () => {
         return initialData;
     })
 
-    console.log(resumeData);
+    // set state to localstorage when state changes
+    useEffect(() => {
+        localStorage.setItem('ResumeDataKey', JSON.stringify(resumeData))
+    }, [resumeData])
 
     return <div className="flex w-full h-screen">
         <div className=" bg-neutral-50 w-full max-w-lg flex justify-center">

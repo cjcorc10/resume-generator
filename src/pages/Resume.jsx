@@ -95,7 +95,10 @@ const Resume = ({state}) => {
                     <View key={idx}>
                         <Text style={tw("font-bold")}>{entry.role && entry.role + '\u007c' + entry.company}</Text>
                         <Text style={tw("italic text-md")}>{entry.from && entry.from + '\u2013' + entry.to}</Text>
-                        <Text>{entry.details}</Text>
+                        { entry.details && entry.details.split('\n').map((line, idx) => (
+                            <Text key={idx}>{'\u2022' + line}</Text>
+                        ))                        
+                        }
                     </View>
                 ))}
             </View>

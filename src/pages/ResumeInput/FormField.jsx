@@ -14,8 +14,9 @@ const FormField = ({idx, field, section, setState, state}) => {
                     const updatedEntries = [...prev[section.title]] 
                     updatedEntries[idx] = {...updatedEntries[idx], [field.label]: e.target.value}
                     return({...prev, [section.title]: updatedEntries});
-                })}>
-
+                })}
+                value={state[section.title][idx][field.label]}>
+                
             </textarea> 
             :
         <input
