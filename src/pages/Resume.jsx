@@ -1,4 +1,19 @@
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { createTw } from "react-pdf-tailwind"
+import clsx from 'clsx';
+
+const tw = createTw({
+    theme: {
+      fontFamily: {
+        sans: ["Comic Sans"],
+      },
+      extend: {
+        colors: {
+          custom: "#bada55",
+        },
+      },
+    },
+  });
 
 const Resume = ({state}) => {
 
@@ -70,7 +85,7 @@ const Resume = ({state}) => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>SUMMARY</Text>
                 <Text style={styles.sectionLine}></Text>
-                <Text style={styles.entry}>{state["summary"][0].summary}</Text>
+                <Text style={tw("list-inside")}>{state["summary"][0].summary}</Text>
             </View>
 
             <View style={styles.section}>
@@ -78,23 +93,35 @@ const Resume = ({state}) => {
                 <Text style={styles.sectionLine}></Text>
                 {state["work experience"].map((entry, idx) => (
                     <View key={idx}>
-                        <Text>{entry.role} | {entry.company}</Text>
-                        <Text>{entry.from} - {entry.to}</Text>
+                        <Text style={tw("font-bold")}>{entry.role && entry.role + '\u007c' + entry.company}</Text>
+                        <Text style={tw("italic text-md")}>{entry.from && entry.from + '\u2013' + entry.to}</Text>
+                        <Text>{entry.details}</Text>
                     </View>
                 ))}
-            
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>EDUCATION</Text>
                 <Text style={styles.sectionLine}></Text>
-
+                {state["education"].map((entry, idx) => (
+                    <View key={idx}>
+                        <Text>{entry["school name"]}</Text>
+                        <Text>{entry.degree}</Text>
+                        <Text>{entry.field}</Text>
+                        <Text>{entry.from && entry.from + '\u2013' + entry.to}</Text>
+                        
+                    </View>
+                ))}
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>SKILLS</Text>
                 <Text style={styles.sectionLine}></Text>
-
+                {state["skills"].map((entry, idx) => (
+                    <View key={idx}>
+                        <Text>{entry.skills}</Text>
+                    </View>
+                ))}
             </View>
 
 
