@@ -23,7 +23,7 @@ const Resume = ({state}) => {
         <Page size="A4" style={tw("p-14")}>
             {state["personal information"].map((entry, idx) => (
                 <View key={idx} style={tw("flex flex-row justify-between items-start border-b-2 border-theme2 mb-4")}>
-12                   <View style={tw("flex flex-col text-4xl font-bold leading-none text-theme1")}>
+                    <View style={tw("flex flex-col text-4xl font-bold leading-none text-theme1")}>
                         <Text>{entry["first name"]}</Text>
                         <Text>{entry["last name"]}</Text>
                         <Text style={tw("mt-2 mb-4 font-bold text-[16px] text-gray-500")}>{entry.role}</Text>
@@ -49,13 +49,12 @@ const Resume = ({state}) => {
                         <View style={tw("flex flex-col text-theme2 text-lg leading-none")} key={idx}>
                             <Text style={tw("text-theme1 font-bold")}>{entry.role && entry.role + ' \u007c ' + entry.company}</Text>
                             <Text style={tw("italic text-[12px] mb-2")}>{entry.from && entry.from + ' \u2013 ' + entry.to}</Text>
-                            {entry.responsibilities.length && entry.responsibilities.split('\n').map((line, idx) => (
-                                <View style={tw("flex flex-row ml-4 gap-2 mb-1 leading-[.85]")} key={idx}>
-                                    <Text>{'\u2022'}</Text>
-                                    <Text>{line}</Text>
-                                </View>
-                            ))                       
+                            {console.log(entry.responsibilities)}
+                            <Text style={tw("ml-4 leading-[.85]")}>
+                            {entry.responsibilities && 
+                            '\u2022 ' + entry.responsibilities.replace(/\n/g, '\n\u2022 ')
                             }
+                            </Text>
                         </View>
                     ))}
                 </View>
@@ -64,15 +63,13 @@ const Resume = ({state}) => {
                     <Text style={tw("font-bold text-2xl leading-5 text-theme1")}>EDUCATION</Text>
                     <Text style={tw("border-b-2 border-black w-12 mb-3")}></Text>
                     {state["education"].map((entry, idx) => (
-                        <View style={tw("text-lg leading-none")} key={idx}>
-                            <View style={tw("flex flex-row text-theme1 font-bold gap-2")}>
-                                <Text>{entry.degree + ' in ' + entry.field}</Text>
-                                <Text>{'\u007c'}</Text>
-                                <Text>{entry["school name"]}</Text>
-                                <Text>{'\u007c'}</Text>
-                                <Text>{entry.location}</Text>
+                        <View style={tw("text-lg leading-none text-theme1 font-bold")} key={idx}>
+                            <View style={tw("flex flex-row gap-2")}>
+                                <Text>{entry.degree && entry.degree + ' in ' + entry.field}</Text>
+                                <Text>{entry["school name"] && '\u007c ' + entry["school name"]}</Text>
                             </View>
-                            <Text style={tw("italic text-[12px] mb-2 text-theme2")}>{entry.from && entry.from + ' \u2013 ' + entry.to}</Text>
+                            <Text>{entry.location}</Text>
+                            <Text style={tw("italic text-[12px] mb-2 text-theme2 font-medium")}>{entry.from && entry.from + ' \u2013 ' + entry.to}</Text>
                         </View>
                     ))}
                 </View>
