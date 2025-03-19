@@ -3,7 +3,8 @@ export const RESUMEFIELDS = [
         title: "personal information",
         canAdd: false,
         fields: [
-            { label: "name", type: "text" },
+            { label: "first name", type: "text" },
+            { label: "last name", type: "text" },
             { label: "role", type: "text"},
             { label: "email", type: "email" },
             { label: "phone", type: "phone" },
@@ -33,6 +34,7 @@ export const RESUMEFIELDS = [
         canAdd: true,
         fields: [
             { label: "school name", type: "text"},
+            { label: "location", type: "text"},
             { label: "degree", type: "text"},
             { label: "field", type: "text"},
             { label: "from", type: "date" },
@@ -41,7 +43,7 @@ export const RESUMEFIELDS = [
     },
     {
         title: "skills",
-        canAdd: true,
+        canAdd: false,
         fields: [
             { label: "skills", type: "text"}
         ]

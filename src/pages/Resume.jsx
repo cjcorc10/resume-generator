@@ -5,126 +5,87 @@ import clsx from 'clsx';
 const tw = createTw({
     theme: {
       fontFamily: {
-        sans: ["Comic Sans"],
+        "sans serif": ["Quicksand"],
       },
       extend: {
         colors: {
-          custom: "#bada55",
+          theme1: "#33373f",
+          theme2: "#3d424c"
         },
       },
     },
   });
 
+
 const Resume = ({state}) => {
 
-    const styles = StyleSheet.create({
-        page: {
-          padding: 30,
-          fontFamily: "Helvetica",
-          color: "#333333"
-        },
-        header: {
-            marginBottom: 20,
-            borderBottom: "2px solid #D3D3D3",
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-        },
-        leftHeader: {
-            flexDirection: 'column'
-        },
-        rightHeader: {
-            flexDirection: 'column',
-            padding: 0,
-            margin: 0,
-            alignItems: 'flex-end',
-        },
-        rightEntry: {
-            fontSize: 12,
-            marginBottom: "5px",
-            color: "#696969"
-        },
-        section: {
-          marginBottom: 20,
-        },
-        sectionLine: {
-            borderBottom: "2px solid #D3D3D3",
-            width: "2rem",
-            marginBottom: "10px",
-        },
-        title: {
-          fontSize: 36,
-          fontWeight: "bold",
-          
-        },
-        sectionTitle: {
-          fontSize: 24,
-          fontWeight: "bold",
-          marginBottom: "10px",
-        },
-        entry: {
-          color: "#696969",
-        },
-      });
-
     return <Document>
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={tw("p-14")}>
             {state["personal information"].map((entry, idx) => (
-                <View key={idx} style={styles.header}>
-                    <View style={styles.leftHeader}>
-                        <Text style={styles.title}>{entry.name}</Text>
-                        <Text style={{ marginBottom: 10, fontWeight: "bold", color: "#696969", fontSize: 14}}>{entry.role}</Text>
+                <View key={idx} style={tw("flex flex-row justify-between items-start border-b-2 border-theme2 mb-4")}>
+12                   <View style={tw("flex flex-col text-4xl font-bold leading-none text-theme1")}>
+                        <Text>{entry["first name"]}</Text>
+                        <Text>{entry["last name"]}</Text>
+                        <Text style={tw("mt-2 mb-4 font-bold text-[16px] text-gray-500")}>{entry.role}</Text>
                     </View>
-                    <View style={styles.rightHeader}>
-                        <Text style={styles.rightEntry}>{entry.email}</Text>
-                        <Text style={styles.rightEntry}>{entry.phone}</Text>
-                        <Text style={styles.rightEntry}>{entry.location}</Text>
+                    <View style={tw("flex flex-col items-end gap-1 text-[12px] text-theme2")}>
+                        <Text>{entry.email}</Text>
+                        <Text>{entry.phone}</Text>
+                        <Text>{entry.location}</Text>
                     </View>
                 </View>
             ))}
-            <View style={styles.section}>
-                <Text style={styles.sectionTitle}>SUMMARY</Text>
-                <Text style={styles.sectionLine}></Text>
-                <Text style={tw("list-inside")}>{state["summary"][0].summary}</Text>
-            </View>
+            <View style={tw("flex flex-col gap-2")}>
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1")}>SUMMARY</Text>
+                    <Text style={tw("border-b-2 border-black w-12 mb-3")}></Text>
+                    <Text style={tw("text-theme2 text-lg leading-[1.3]")}>{state["summary"][0].summary}</Text>
+                </View>
 
-            <View style={styles.section}>
-                <Text style={styles.sectionTitle}>WORK EXPERIENCE</Text>
-                <Text style={styles.sectionLine}></Text>
-                {state["work experience"].map((entry, idx) => (
-                    <View style={tw("flex flex-col gap-2 my-2")} key={idx}>
-                        <Text style={tw("font-bold")}>{entry.role && entry.role + '\u007c' + entry.company}</Text>
-                        <Text style={tw("italic text-md")}>{entry.from && entry.from + '\u2013' + entry.to}</Text>
-                        { entry.responsibilities && entry.responsibilities.split('\n').map((line, idx) => (
-                            <Text key={idx}>{'\u2022' + line}</Text>
-                        ))                        
-                        }
-                    </View>
-                ))}
-            </View>
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1")}>WORK EXPERIENCE</Text>
+                    <Text style={tw("border-b-2 border-black w-12 mb-3")}></Text>
+                    {state["work experience"].map((entry, idx) => (
+                        <View style={tw("flex flex-col text-theme2 text-lg leading-none")} key={idx}>
+                            <Text style={tw("text-theme1 font-bold")}>{entry.role && entry.role + ' \u007c ' + entry.company}</Text>
+                            <Text style={tw("italic text-[12px] mb-2")}>{entry.from && entry.from + ' \u2013 ' + entry.to}</Text>
+                            {entry.responsibilities.length && entry.responsibilities.split('\n').map((line, idx) => (
+                                <View style={tw("flex flex-row ml-4 gap-2 mb-1 leading-[.85]")} key={idx}>
+                                    <Text>{'\u2022'}</Text>
+                                    <Text>{line}</Text>
+                                </View>
+                            ))                       
+                            }
+                        </View>
+                    ))}
+                </View>
 
-            <View style={styles.section}>
-                <Text style={styles.sectionTitle}>EDUCATION</Text>
-                <Text style={styles.sectionLine}></Text>
-                {state["education"].map((entry, idx) => (
-                    <View key={idx}>
-                        <Text>{entry["school name"]}</Text>
-                        <Text>{entry.degree}</Text>
-                        <Text>{entry.field}</Text>
-                        <Text>{entry.from && entry.from + '\u2013' + entry.to}</Text>
-                        
-                    </View>
-                ))}
-            </View>
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1")}>EDUCATION</Text>
+                    <Text style={tw("border-b-2 border-black w-12 mb-3")}></Text>
+                    {state["education"].map((entry, idx) => (
+                        <View style={tw("text-lg leading-none")} key={idx}>
+                            <View style={tw("flex flex-row text-theme1 font-bold gap-2")}>
+                                <Text>{entry.degree + ' in ' + entry.field}</Text>
+                                <Text>{'\u007c'}</Text>
+                                <Text>{entry["school name"]}</Text>
+                                <Text>{'\u007c'}</Text>
+                                <Text>{entry.location}</Text>
+                            </View>
+                            <Text style={tw("italic text-[12px] mb-2 text-theme2")}>{entry.from && entry.from + ' \u2013 ' + entry.to}</Text>
+                        </View>
+                    ))}
+                </View>
 
-            <View style={styles.section}>
-                <Text style={styles.sectionTitle}>SKILLS</Text>
-                <Text style={styles.sectionLine}></Text>
-                {state["skills"].map((entry, idx) => (
-                    <View key={idx}>
-                        <Text>{entry.skills}</Text>
-                    </View>
-                ))}
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1")}>SKILLS</Text>
+                    <Text style={tw("border-b-2 border-black w-12 mb-3")}></Text>
+                    {state["skills"].map((entry, idx) => (
+                        <View key={idx}>
+                            <Text>{entry.skills}</Text>
+                        </View>
+                    ))}
+                </View>
             </View>
 
 
