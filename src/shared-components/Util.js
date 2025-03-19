@@ -22,8 +22,8 @@ export const RESUMEFIELDS = [
         title: "work experience",
         canAdd: true,
         fields: [
-            { label: "company", type: "text" },
             { label: "role", type: "text" },
+            { label: "company", type: "text" },
             { label: "from", type: "date" },
             { label: "to", type: "date" },
             { label: "responsibilities", type: "textarea"},
@@ -45,7 +45,7 @@ export const RESUMEFIELDS = [
         title: "skills",
         canAdd: false,
         fields: [
-            { label: "skills", type: "text"}
+            { label: "skills", type: "textarea"}
         ]
     },
 ]

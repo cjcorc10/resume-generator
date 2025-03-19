@@ -78,8 +78,10 @@ const Resume = ({state}) => {
                     <Text style={tw("font-bold text-2xl leading-5 text-theme1")}>SKILLS</Text>
                     <Text style={tw("border-b-2 border-black w-12 mb-3")}></Text>
                     {state["skills"].map((entry, idx) => (
-                        <View key={idx}>
-                            <Text>{entry.skills}</Text>
+                        <View style={tw("text-theme2 text-lg leading-none")} key={idx}>
+                            <Text>
+                                {entry.skills && entry.skills.replace(/\n/g, ' \u2022 ')}
+                            </Text>
                         </View>
                     ))}
                 </View>
