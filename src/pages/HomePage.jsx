@@ -30,11 +30,11 @@ const HomePage = () => {
         localStorage.setItem('ResumeDataKey', JSON.stringify(resumeData))
     }, [resumeData])
 
-    return <div className="flex w-full h-screen">
-        <div className=" bg-neutral-50 w-full max-w-lg flex justify-center">
+    return <div className="flex h-screen">
+        <div className="w-full flex justify-center items-start flex-1 border-4 border-green-300">
             <ResumeInput resumeData={resumeData} setState={setResumeData}/>
         </div>
-        <div className="flex-1 flex justify-center h-150 mt-16">
+        <div className="flex-1 flex justify-center items-center">
             <PDFViewer>
                 <Resume state={resumeData} />
             </PDFViewer>

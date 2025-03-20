@@ -10,6 +10,7 @@ const FormField = ({idx, field, section, setState, state}) => {
             >{field.label}</label>
         {field.type === "textarea" ?
             <textarea
+                className=""
                 onChange={(e) => setState(prev => {
                     const updatedEntries = [...prev[section.title]] 
                     updatedEntries[idx] = {...updatedEntries[idx], [field.label]: e.target.value}
@@ -25,7 +26,7 @@ const FormField = ({idx, field, section, setState, state}) => {
             updatedEntries[idx] = {...updatedEntries[idx], [field.label]: e.target.value}
             return({...prev, [section.title]: updatedEntries});
         })}
-        className={"border border-gray-300 rounded-md px-2 mb-2"}
+        className="border border-gray-300 rounded-md px-2 mb-2 w-50"
         value={state[section.title][idx][field.label]}
         type={field.type}></input>
     }
