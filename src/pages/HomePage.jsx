@@ -30,8 +30,8 @@ const HomePage = () => {
 
   return (
     <div className="flex justify-center bg-gray-50">
-      <div className="flex h-screen w-full max-w-[100rem]">
-        <div className="w-full flex justify-center items-start flex-1 overflow-x-scroll">
+      <div className="block md:flex h-screen w-full max-w-[100rem]">
+        <div className="w-full flex justify-center items-start flex-1 overflow-x-scroll px-4">
           <ResumeInput resumeData={resumeData} setState={setResumeData} />
         </div>
         <div className="flex-1 flex justify-center items-center">

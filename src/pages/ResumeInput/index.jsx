@@ -26,7 +26,7 @@ const ResumeInput = ({resumeData, setState}) => {
                     <i className={`${section.icon} text-2xl w-12 text-slate-600`}></i>
                     {section.title}
                 </div>
-                <i className="fa-solid fa-angle-down text-xl"></i>
+                <i className={clsx("text-xl fa-solid", seeForm[section.title] ? "fa-angle-up" : "fa-angle-down")}></i>
             </button> 
 
             { seeForm[section.title] && 
@@ -35,7 +35,7 @@ const ResumeInput = ({resumeData, setState}) => {
                     ><FormSection setState={setState} state={resumeData} section={section}/></div>
             }
             <div
-                className="flex justify-center">
+                className="flex justify-center bg-white">
 
             { seeForm[section.title] && section.canAdd && 
                 <button 
@@ -50,7 +50,7 @@ const ResumeInput = ({resumeData, setState}) => {
                         [section.title]: [...prev[section.title], newObj]
                     }))
                 }}
-                className="p-2 overflow-clip rounded-md bg-slate-300 w-48 m-4 shadow-md text-slate-700 hover:scale-105 duration-300 border border-slate-200"
+                className="p-2 overflow-clip rounded-md bg-slate-500 w-48 m-4 shadow-md text-white font-bold hover:scale-105 duration-300"
                 >add more {section.title}</button>
             }
             </div>
