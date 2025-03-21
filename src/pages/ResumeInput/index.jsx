@@ -26,7 +26,7 @@ const ResumeInput = ({resumeData, setState}) => {
                     <i className={`${section.icon} text-2xl w-12 text-slate-600`}></i>
                     {section.title}
                 </div>
-                <i className={clsx("text-xl fa-solid", seeForm[section.title] ? "fa-angle-up" : "fa-angle-down")}></i>
+                <i className={clsx("text-xl fa-solid fa-angle-down", seeForm[section.title] ? "-rotate-180 duration-300" : "rotate-0 duration-300")}></i>
             </button> 
 
             { seeForm[section.title] && 
