@@ -1,10 +1,8 @@
-import { useState } from "react";
-import clsx from 'clsx';
 import FormField from "./FormField";
 
 const FormSection = ({ section, state, setState }) => {
     
-    return <div className="flex max-w-xl flex-wrap justify-center">
+    return <div className="flex flex-wrap justify-center w-full p-5 bg-white">
 
             {state[section.title].map((entry, idx) => (
                 section.fields.map(field => (
