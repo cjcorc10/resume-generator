@@ -12,7 +12,7 @@ const ResumeInput = ({resumeData, setState}) => {
         return formsObj;
     });
 
-    return <form className="flex flex-col my-72 max-w-xl w-full">
+    return <form className="flex flex-col mt-48 mb-4 max-w-xl w-full">
 
         {RESUMEFIELDS.map((section, idx) => ( <div 
             className="flex flex-col border border-gray-300 overflow-clip rounded-lg"
