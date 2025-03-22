@@ -1,10 +1,14 @@
 import { RESUMEFIELDS } from "../../shared-components/Util";
 import FormSection from "./FormSection";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import clsx from "clsx";
+import SessionContext from "../../contexts/SessionContext";
 
 
-const ResumeInput = ({resumeData, setState}) => {
+const ResumeInput = () => {
+    
+    const {resumeData, setResumeData} = useContext(SessionContext);
+    
     const [seeForm, setSeeForm] = useState(() => {
         const formsObj = {};
         for(let i in resumeData)
@@ -12,10 +16,12 @@ const ResumeInput = ({resumeData, setState}) => {
         return formsObj;
     });
 
-    return <form className="flex flex-col mt-48 mb-4 max-w-xl w-full">
+
+
+    return <form className="flex flex-col mb-4 w-full relative max-w-xl">
 
         {RESUMEFIELDS.map((section, idx) => ( <div 
-            className="flex flex-col border border-gray-300 overflow-clip rounded-lg"
+            className={clsx("flex flex-col border border-gray-300 overflow-clip rounded-lg", seeForm[section.title] && "")}
             key={idx}>
             <button 
                 onClick={(e) => {
@@ -28,15 +34,13 @@ const ResumeInput = ({resumeData, setState}) => {
                 </div>
                 <i className={clsx("text-xl fa-solid fa-angle-down", seeForm[section.title] ? "-rotate-180 duration-300" : "rotate-0 duration-300")}></i>
             </button> 
-
             { seeForm[section.title] && 
                 <div
                     className="flex"
-                    ><FormSection setState={setState} state={resumeData} section={section}/></div>
+                    ><FormSection section={section}/></div>
             }
             <div
                 className="flex justify-center bg-white">
-
             { seeForm[section.title] && section.canAdd && 
                 <button 
                 onClick={(e) => {
@@ -45,7 +49,7 @@ const ResumeInput = ({resumeData, setState}) => {
                     const newObj = {};
                     for(let field in resumeData[section.title][0])
                         newObj[field] = "";
-                    setState(prev => ({
+                    setResumeData(prev => ({
                         ...prev,
                         [section.title]: [...prev[section.title], newObj]
                     }))
@@ -54,6 +58,7 @@ const ResumeInput = ({resumeData, setState}) => {
                 >add more {section.title}</button>
             }
             </div>
+            
         </div>
         ))}
     </form>
