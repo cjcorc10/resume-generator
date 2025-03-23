@@ -5,7 +5,7 @@ import SessionContext from "../../contexts/SessionContext"
 const FormField = ({idx, field, section}) => {
     
     const {resumeData, setResumeData} = useContext(SessionContext);
-    console.log(resumeData);
+    
     return <div 
         key={field.label}
         className={clsx("flex flex-col px-8 py-1 text-gray-600", field.type==="textarea" && "w-full")}>

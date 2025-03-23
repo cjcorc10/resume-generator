@@ -5,7 +5,7 @@ import clsx from "clsx";
 import SessionContext from "../../contexts/SessionContext";
 
 
-const ResumeInput = () => {
+const ResumeInput = ({showSection, setShowSection}) => {
     
     const {resumeData, setResumeData} = useContext(SessionContext);
     
@@ -16,19 +16,25 @@ const ResumeInput = () => {
         return formsObj;
     });
 
-
-
     return <form className="flex flex-col mb-4 w-full relative max-w-xl">
 
         {RESUMEFIELDS.map((section, idx) => ( <div 
-            className={clsx("flex flex-col border border-gray-300 overflow-clip rounded-lg", seeForm[section.title] && "")}
+            className={clsx("flex flex-col border border-gray-300 overflow-clip rounded-lg", showSection.includes(section.title) && "hidden")}
             key={idx}>
             <button 
                 onClick={(e) => {
                     e.preventDefault();
                     setSeeForm(prev =>  ({...prev, [section.title]: !prev[section.title]}))}}
                     className={clsx("flex items-center justify-between px-3 text-md text-slate-700 font-bold py-2 overflow-clip flex-1 hover:bg-yellow-100 duration-300", seeForm[section.title] && "bg-yellow-200", idx%2==0 && "bg-blue-100")}>
-                <div className="flex flex-1 justify-start gap-2">
+                <div className="flex flex-1 justify-start gap-2 items-center">
+
+                        {!section.default && <button 
+                            onClick={() => setShowSection(prev => {
+                                const sections = [...prev];
+                                sections.push(section.title)
+                                return sections;
+                            })}
+                            className="border border-gray-300 rounded-lg flex p-1 shadow-md hover:bg-black/15 duration-100"><i className="fa-solid fa-trash text-md text-red-300"></i></button>}
                     <i className={`${section.icon} text-2xl w-12 text-slate-600`}></i>
                     {section.title}
                 </div>

@@ -10,7 +10,8 @@ export const RESUMEFIELDS = [
             { label: "phone", type: "phone" },
             { label: "location", type: "text"},
         ],
-        icon: "fa-solid fa-person-dress"
+        icon: "fa-solid fa-person-dress",
+        default: true,
     },
     {
         title: "summary",
@@ -18,7 +19,8 @@ export const RESUMEFIELDS = [
         fields: [
             { label: "summary", type: "textarea"},
         ],
-        icon: "fa-solid fa-scroll"
+        icon: "fa-solid fa-scroll",
+        default: true,
     },
     {
         title: "work experience",
@@ -30,7 +32,8 @@ export const RESUMEFIELDS = [
             { label: "to", type: "date" },
             { label: "responsibilities", type: "textarea"},
         ],
-        icon: "fa-solid fa-hammer"
+        icon: "fa-solid fa-hammer",
+        default: true,
     },
     {
         title: "education",
@@ -43,7 +46,8 @@ export const RESUMEFIELDS = [
             { label: "from", type: "date" },
             { label: "to", type: "date"}
         ],
-        icon: "fa-solid fa-apple-whole"
+        icon: "fa-solid fa-apple-whole",
+        default: true,
     },
     {
         title: "skills",
@@ -51,6 +55,49 @@ export const RESUMEFIELDS = [
         fields: [
             { label: "skills", type: "textarea"}
         ],
-        icon: "fa-solid fa-computer"
+        icon: "fa-solid fa-computer",
+        default: true,
     },
+    {
+        title: "projects",
+        canAdd: true,
+        fields: [
+            { label: "title", type: "text"},
+            { label: "link", type: "text"},
+            { label: "description", type: "textarea"}
+        ],
+        icon: "fa-solid fa-flask",
+        default: false,
+    },
+    {
+        title: "awards",
+        canAdd: true,
+        fields: [
+            { label: "title", type: "text"},
+            { label: "received", type: "date"}
+        ],
+        icon: "fa-solid fa-trophy",
+        default: false,
+    },
+    {
+        title: "certifications",
+        canAdd: true,
+        fields: [
+            { label: "title", type: "text"},
+            { label: "organization", type: "text"},
+            { label: "data received", type: "date"}
+        ],
+        icon: "fa-solid fa-award",
+        default: false,
+    },
+    {
+        title: "socials",
+        canAdd: true,
+        fields: [
+            { label: "site", type: "text"},
+            { label: "link", type: "text"}
+        ],
+        icon: "fa-solid fa-link",
+        default: false,
+    }
 ]
