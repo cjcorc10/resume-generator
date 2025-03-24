@@ -85,17 +85,45 @@ const Resume = ({resumeData}) => {
                     ))}
                 </View>
 
-                <View>
-                    projects
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["projects"][0]["title"] && "PROJECTS"}</Text>
+                    {resumeData["projects"].map((entry,idx) => (
+                        <View>
+                            <Text>
+                                projects
+                            </Text>
+                        </View>
+                    ))}
                 </View>
-                <View>
-                    awards
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["awards"][0]["title"] && "AWARDS"}</Text>
+                    {resumeData["awards"].map((entry,idx) => (
+                        <View>
+                            <Text>
+                            awards
+                            </Text>
+                        </View>
+                    ))}
                 </View>
-                <View>
-                    certifications
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["certifications"][0]["title"] && "CERTIFICATIONS"}</Text>
+                    {resumeData["certifications"].map((entry,idx) => (
+                        <View style={tw("text-theme-1 flex flex-col mb-1 text-[12px] font-bold")}>
+                            <Text>{entry.title}</Text>
+                            <Text>{entry["date received"]}</Text>
+                            <Text>{entry.organization}</Text>
+                        </View>
+                    ))}
                 </View>
-                <View>
-                    socials
+                <View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["socials"][0]["site"] && "SOCIAL NETWORKS"}</Text>
+                    {resumeData["socials"].map((entry,idx) => (
+                        <View>
+                            <Text>
+                            socials
+                            </Text>
+                        </View>
+                    ))}
                 </View>
             </View>
 
