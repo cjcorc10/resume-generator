@@ -85,7 +85,7 @@ export const RESUMEFIELDS = [
         fields: [
             { label: "title", type: "text"},
             { label: "organization", type: "text"},
-            { label: "data received", type: "date"}
+            { label: "date received", type: "date"}
         ],
         icon: "fa-solid fa-award",
         default: false,

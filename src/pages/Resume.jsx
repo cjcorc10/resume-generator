@@ -88,10 +88,10 @@ const Resume = ({resumeData}) => {
                 <View style={tw("my-2")}>
                     <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["projects"][0]["title"] && "PROJECTS"}</Text>
                     {resumeData["projects"].map((entry,idx) => (
-                        <View>
-                            <Text>
-                                projects
-                            </Text>
+                        <View style={tw("flex flex-col mb-3 text-theme2 text-lg leading-none gap-2")}>
+                            <Text style={tw("text-theme1 font-bold text-xl leading-none")}>{entry.title}</Text>
+                            <Text style={tw("underline")}>{entry.link}</Text>
+                            <Text>{entry.description}</Text>
                         </View>
                     ))}
                 </View>
@@ -100,7 +100,7 @@ const Resume = ({resumeData}) => {
                     {resumeData["awards"].map((entry,idx) => (
                         <View>
                             <Text>
-                            awards
+                            
                             </Text>
                         </View>
                     ))}
@@ -108,7 +108,7 @@ const Resume = ({resumeData}) => {
                 <View style={tw("my-2")}>
                     <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["certifications"][0]["title"] && "CERTIFICATIONS"}</Text>
                     {resumeData["certifications"].map((entry,idx) => (
-                        <View style={tw("text-theme-1 flex flex-col mb-1 text-[12px] font-bold")}>
+                        <View style={tw("text-theme-1 flex flex-col mb-2 text-[12px] font-bold")}>
                             <Text>{entry.title}</Text>
                             <Text>{entry["date received"]}</Text>
                             <Text>{entry.organization}</Text>
@@ -120,7 +120,7 @@ const Resume = ({resumeData}) => {
                     {resumeData["socials"].map((entry,idx) => (
                         <View>
                             <Text>
-                            socials
+                            
                             </Text>
                         </View>
                     ))}
