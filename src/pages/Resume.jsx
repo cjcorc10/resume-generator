@@ -39,13 +39,13 @@ const Resume = ({resumeData}) => {
             ))}
             <View style={tw("flex flex-col gap-2")}>
                 <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>SUMMARY</Text>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["summary"][0].summary && "SUMMARY"}</Text>
                     <Text style={tw("text-theme2 text-lg leading-[1.3]")}>{resumeData["summary"][0].summary}</Text>
                 </View>
 
                 <View style={tw("my-2")}>
     
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>WORK EXPERIENCE</Text>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["work experience"][0].role && "WORK EXPERIENCE"}</Text>
                    {resumeData["work experience"].map((entry, idx) => (
                         <View style={tw("flex flex-col text-theme2 text-lg leading-none")} key={idx}>
                             <Text style={tw("text-theme1 font-bold")}>{entry.role && entry.role + ' \u007c ' + entry.company}</Text>
@@ -61,7 +61,7 @@ const Resume = ({resumeData}) => {
                 </View>
 
                 <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>EDUCATION</Text>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["education"][0]["school name"] && "EDUCATION"}</Text>
                    {resumeData["education"].map((entry, idx) => (
                         <View style={tw("text-lg leading-none text-theme1 font-bold")} key={idx}>
                             <View style={tw("flex flex-row gap-2")}>
@@ -75,7 +75,7 @@ const Resume = ({resumeData}) => {
                 </View>
 
                 <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>SKILLS</Text>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["skills"][0]["skills"] && "SKILLS"}</Text>
                     {resumeData["skills"].map((entry, idx) => (
                         <View style={tw("text-theme2 text-lg leading-none")} key={idx}>
                             <Text>
@@ -83,6 +83,19 @@ const Resume = ({resumeData}) => {
                             </Text>
                         </View>
                     ))}
+                </View>
+
+                <View>
+                    projects
+                </View>
+                <View>
+                    awards
+                </View>
+                <View>
+                    certifications
+                </View>
+                <View>
+                    socials
                 </View>
             </View>
 
