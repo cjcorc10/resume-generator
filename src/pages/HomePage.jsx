@@ -1,5 +1,5 @@
 import ResumeInput from "./ResumeInput";
-import Resume from "./Resume";
+import ResumeOutput from "./ResumeOutput";
 import { useContext, useEffect, useState } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
 import SessionContext from "../contexts/SessionContext";
@@ -41,7 +41,7 @@ const HomePage = () => {
                 <h2 className="text-xl  mb-4 font-bold text-slate-500">
                     Select section to edit
                 </h2>
-                <ResumeInput showSection={showSection} setShowSection={setShowSection}/>
+                <ResumeInput showSection={showSection} setShowSection={setShowSection} setRender={() => setRender(false)}/>
             </div>
             <div className="bg-gray-200  w-full p-2 flex flex-col rounded-md">
                 <h2 className="text-xl text-center font-bold text-slate-500 border-b border-slate-400 py-2">
@@ -55,7 +55,7 @@ const HomePage = () => {
         <div className="flex-1 flex flex-col justify-center px-4 items-center py-12">
           { render ? ( 
           <PDFViewer className="border border-gray-300 shadow-md h-150 w-100 rounded-lg">
-            <Resume resumeData={resumeData}/>
+            <ResumeOutput resumeData={resumeData}/>
           </PDFViewer>) 
           : (
           <button 

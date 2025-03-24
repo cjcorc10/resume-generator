@@ -2,7 +2,7 @@ import FormField from "./FormField";
 import { useContext } from "react";
 import SessionContext from "../../contexts/SessionContext";
 
-const FormSection = ({section}) => {
+const FormSection = ({section, setRender}) => {
 
     const {resumeData, setResumeData} = useContext(SessionContext);
     
@@ -16,6 +16,7 @@ const FormSection = ({section}) => {
                             <button 
                                 onClick={(e) => {
                                     e.preventDefault();
+                                    setRender();
                                     setResumeData(prev => {
                                         const sectionArray = [...prev[section.title]];
                                         sectionArray.splice(idx, 1);

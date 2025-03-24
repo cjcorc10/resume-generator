@@ -19,7 +19,7 @@ const tw = createTw({
 
 
 
-const Resume = ({resumeData}) => {
+const ResumeOutput = ({resumeData}) => {
 
     return <Document>
         <Page size="A4" style={tw("p-14")}>
@@ -85,46 +85,48 @@ const Resume = ({resumeData}) => {
                     ))}
                 </View>
 
-                <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["projects"][0]["title"] && "PROJECTS"}</Text>
+
+                {resumeData["projects"][0]["title"] && (<View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>PROJECTS</Text>
                     {resumeData["projects"].map((entry,idx) => (
-                        <View style={tw("flex flex-col mb-3 text-theme2 text-lg leading-none gap-2")}>
-                            <Text style={tw("text-theme1 font-bold text-xl leading-none")}>{entry.title}</Text>
-                            <Text style={tw("underline")}>{entry.link}</Text>
+                        <View style={tw("flex flex-col mb-3 text-theme2 text-lg leading-none")} key={idx}>
+                            <Text style={tw("text-theme1 font-bold text-lg leading-none")}>{entry.title}</Text>
+                            <Text style={tw("italic text-slate-700")}>{entry.link}</Text>
                             <Text>{entry.description}</Text>
                         </View>
                     ))}
-                </View>
-                <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["awards"][0]["title"] && "AWARDS"}</Text>
+                </View>)}
+
+                {resumeData["awards"][0]["title"] && (<View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>AWARDS</Text>
                     {resumeData["awards"].map((entry,idx) => (
-                        <View>
-                            <Text>
-                            
-                            </Text>
+                        <View style={tw("flex flex-row text-theme1 text-lg")} key={idx}>
+                            <Text>{entry.title + " - "}</Text>
+                            <Text style={tw("text-theme2")}>{entry.received}</Text>
                         </View>
                     ))}
-                </View>
-                <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["certifications"][0]["title"] && "CERTIFICATIONS"}</Text>
+                </View>)}
+
+                {resumeData["certifications"][0]["title"] && (<View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>CERTIFICATIONS</Text>
                     {resumeData["certifications"].map((entry,idx) => (
-                        <View style={tw("text-theme-1 flex flex-col mb-2 text-[12px] font-bold")}>
+                        <View style={tw("text-theme1 flex flex-col mb-2 text-[12px] font-bold")} key={idx}>
                             <Text>{entry.title}</Text>
-                            <Text>{entry["date received"]}</Text>
-                            <Text>{entry.organization}</Text>
+                            <Text style={tw("italic")}>{entry["date received"]}</Text>
+                            <Text style={tw("text-theme2")}>{entry.organization}</Text>
                         </View>
                     ))}
-                </View>
-                <View style={tw("my-2")}>
-                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>{resumeData["socials"][0]["site"] && "SOCIAL NETWORKS"}</Text>
+                </View>)}
+
+                {resumeData["socials"][0]["site"] && (<View style={tw("my-2")}>
+                    <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>SOCIAL NETWORKS</Text>
                     {resumeData["socials"].map((entry,idx) => (
-                        <View>
-                            <Text>
-                            
-                            </Text>
+                        <View style={tw("flex flex-row text-theme2 text-lg")}>
+                            <Text style={tw("font-bold")}>{entry.site + ": "}</Text>
+                            <Text style={tw("text-slate-700")}>{entry.link}</Text>
                         </View>
                     ))}
-                </View>
+                </View>)}
             </View>
 
 
@@ -133,4 +135,4 @@ const Resume = ({resumeData}) => {
     </Document>
 }
 
-export default Resume;
+export default ResumeOutput;

@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import clsx from "clsx";
 import SessionContext from "../../contexts/SessionContext";
 
-const ResumeInput = ({ showSection, setShowSection}) => {
+const ResumeInput = ({ showSection, setShowSection, setRender}) => {
   const { resumeData, setResumeData } = useContext(SessionContext);
 
   const [seeForm, setSeeForm] = useState(() => {
@@ -43,11 +43,14 @@ const ResumeInput = ({ showSection, setShowSection}) => {
                 onClick={
                   // remove from active div by pushing back into showSection array
                   () => {
+                    setRender();
                     setShowSection((prev) => {
                       const sections = [...prev];
                       sections.push(section.title);
                       return sections;
-                    });
+                    }
+                    
+                  )
                     /* 
                     clear the data inside of the fields for the object
                     */
@@ -79,7 +82,7 @@ const ResumeInput = ({ showSection, setShowSection}) => {
           </button>
           {seeForm[section.title] && (
             <div className="flex">
-              <FormSection section={section}/>
+              <FormSection section={section} setRender={setRender}/>
             </div>
           )}
           <div className="flex justify-center bg-white">
@@ -87,7 +90,6 @@ const ResumeInput = ({ showSection, setShowSection}) => {
               <button
               onClick={(e) => {
                 e.preventDefault();
-                
                 const newObj = {};
                 for (let field in resumeData[section.title][0])
                   newObj[field] = "";
