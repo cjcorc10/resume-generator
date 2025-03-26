@@ -121,7 +121,7 @@ const ResumeOutput = ({resumeData}) => {
                 {resumeData["socials"][0]["site"] && (<View style={tw("my-2")}>
                     <Text style={tw("font-bold text-2xl leading-5 text-theme1 mb-2")}>SOCIAL NETWORKS</Text>
                     {resumeData["socials"].map((entry,idx) => (
-                        <View style={tw("flex flex-row text-theme2 text-lg")}>
+                        <View style={tw("flex flex-row text-theme2 text-lg")} key={idx}>
                             <Text style={tw("font-bold")}>{entry.site + ": "}</Text>
                             <Text style={tw("text-slate-700")}>{entry.link}</Text>
                         </View>

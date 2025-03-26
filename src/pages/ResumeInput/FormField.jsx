@@ -30,7 +30,7 @@ const FormField = ({idx, field, section}) => {
             updatedEntries[idx] = {...updatedEntries[idx], [field.label]: e.target.value}
             return({...prev, [section.title]: updatedEntries});
         })}
-        className="border border-gray-300 rounded-md px-2 py-1 mb-2 w-50"
+        className="border border-gray-300 rounded-md px-2 py-1 mb-2 w-45"
         value={resumeData[section.title][idx][field.label]}
         type={field.type}></input>
     }

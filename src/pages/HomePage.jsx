@@ -54,13 +54,13 @@ const HomePage = () => {
         </div>
         <div className="flex-1 flex flex-col justify-center px-4 items-center py-12">
           { render ? ( 
-          <PDFViewer className="border border-gray-300 shadow-md h-150 w-100 rounded-lg">
+          <PDFViewer className="border border-gray-300 shadow-md md:h-150 md:w-100 h-75 w-60 rounded-lg">
             <ResumeOutput resumeData={resumeData}/>
           </PDFViewer>) 
           : (
           <button 
           onClick={() => setRender(true)}
-          className="border rounded-md p-2 font-bold bg-slate-700 shadow-lg text-white hover:scale-110 duration-300 text-xl text-wrap ">render resume</button>)
+          className="border rounded-md p-2 font-bold bg-slate-700 shadow-lg text-white hover:scale-110 duration-300 text-xl text-wrap ">build resume</button>)
           } 
         </div>
       </div>
@@ -70,3 +70,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
+
+

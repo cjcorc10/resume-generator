@@ -14,7 +14,7 @@ const ResumeInput = ({ showSection, setShowSection, setRender}) => {
   });
 
   return (
-    <form className="flex flex-col mb-4 w-full relative max-w-xl">
+    <form className="flex flex-col mb-4 w-full relative max-w-xl px-4">
       {RESUMEFIELDS.map((section, idx) => (
         <div
         className={clsx(
